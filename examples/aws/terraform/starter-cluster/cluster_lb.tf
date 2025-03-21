@@ -6,7 +6,7 @@
 resource "aws_lb" "cluster" {
   name               = "${var.cluster_name}-alb"
   internal           = false
-  subnets            = [data.aws_subnets.all.ids[0], data.aws_subnets.all.ids[1]]
+  subnets            = [data.aws_subnets.public.ids[0], data.aws_subnets.public.ids[1]]
   load_balancer_type = "application"
   idle_timeout       = 3600
   security_groups    = [aws_security_group.cluster.id]
