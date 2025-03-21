@@ -3,7 +3,7 @@ resource "aws_instance" "cluster" {
   key_name                    = var.key_name
   ami                         = data.aws_ami.base.id
   instance_type               = var.cluster_instance_type
-  subnet_id                   = tolist(data.aws_subnets.all.ids)[0]
+  subnet_id                   = tolist(data.aws_subnets.public.ids)[0]
   vpc_security_group_ids      = [aws_security_group.cluster.id]
   associate_public_ip_address = true
   iam_instance_profile        = aws_iam_role.cluster.id
